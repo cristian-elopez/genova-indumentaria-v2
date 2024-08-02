@@ -1,19 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { GenderClothing } from "../../axios/products/genderClothing";
+import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
-  womenproducts: await GenderClothing("femenino"),
+    womenproducts: [],
 };
 
 export const womenProductsSlice = createSlice({
-  name: 'womenProducts',
-  initialState: INITIAL_STATE,
-  reducers: {
-    womenproducts: state => {
-      return state;
+    name: "womenProducts",
+    initialState: INITIAL_STATE,
+    reducers: {
+        womenproducts: (state) => {
+            return state;
+        },
+        addWomensProducts: (state, action) => {
+            return {
+                ...state, 
+                womenproducts: action.payload,
+            }
+        }
     },
-  },
 });
 
-export const { womenproducts } = womenProductsSlice.actions;
+export const { womenproducts, addWomensProducts } = womenProductsSlice.actions;
 export default womenProductsSlice.reducer;

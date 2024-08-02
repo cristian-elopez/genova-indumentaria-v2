@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react"
 import { CardProduct } from "./CardProduct"
 import { ProductosContainer } from "./CardsProductsStyles"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router-dom"
+import { addMensProducts } from "../../redux/products/menProductsSlice"
+import { addWomensProducts } from "../../redux/products/womenProductsSlice"
+import { GenderClothing } from "../../axios/products/genderClothing"
 
 export const CardsProducts = (genero) => {
     const { pathname } = useLocation();
     let [products, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
-    const { maleproducts } = useSelector(state => state.menswear);
-    const { womenproducts } = useSelector(state => state.womenswear);
     const { selectedCategory } = useSelector(state => state.categories);
+    const dispatch = useDispatch();
 
     let chosen = [];
     let gender = genero.gender;
@@ -18,9 +20,11 @@ export const CardsProducts = (genero) => {
         setProduct(null);
         setLoading(true);
         if (gender == '/gender/men') {
-            chosen = await maleproducts;
+            chosen = await GenderClothing("masculino");
+            dispatch(addMensProducts());
         } else if (gender == '/gender/women') {
-            chosen = await womenproducts;
+            chosen = await GenderClothing("femenino");
+            dispatch(addWomensProducts());
         };
 
         if (selectedCategory) {

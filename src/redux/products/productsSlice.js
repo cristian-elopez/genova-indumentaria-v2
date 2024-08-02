@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { AllProducts } from "../../axios/products/allProducts"
 
 const INITIAL_STATE = {
-  products: await AllProducts(true),
+  products: [],
 };
 
 export const productsSlice = createSlice({
