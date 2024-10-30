@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Form as FormikForm } from 'formik';
+import styled from "styled-components";
+import { Form as FormikForm } from "formik";
 
 export const LoginContainerStyled = styled.div`
   display: flex;
@@ -30,14 +30,14 @@ export const Form = styled(FormikForm)`
 `;
 
 export const LoginPasswordStyled = styled.p`
-  color: white;
+  color: ${({ theme }) => theme.text};
   &:hover {
     text-decoration: underline;
-  } 
+  }
 `;
 
 export const LoginEmailStyled = styled.p`
-  color: white;
+  color: ${({ theme }) => theme.text};
   &:hover {
     text-decoration: underline;
   }

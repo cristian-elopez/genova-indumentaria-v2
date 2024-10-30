@@ -1,9 +1,9 @@
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     :root {
-        --gray-bg: #2E2C2F;
-        --gray-bg-two: #18191a;
+        --dark-background: #2E2C2F;
+        --light-background: #FFFFFF;
     }
 
     html {
@@ -14,8 +14,8 @@ export const GlobalStyles = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        background: var(--gray-bg);
-        color: white;
+        background: ${({ theme }) => theme.background};
+        color: ${({ theme }) => theme.text};
         font-family: "Orbitron", sans-serif;
         display: flex;
         flex-direction: column;
